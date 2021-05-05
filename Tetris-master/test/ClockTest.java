@@ -25,24 +25,24 @@ class ClockTest {
 	public Clock clock;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		clock = new Clock(1);
 		System.setOut(new PrintStream(outContent));
 		System.setErr(new PrintStream(errContent));
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 		clock = null;
 		System.setOut(ogOut);
 		System.setErr(ogErr);
 	}
 
 	@Test
-	void CPCtest() {
+	public void CPCtest() { //for constructor 
 		
-		ClockTest.clock();
-        assertEquals(null,outContent.toString().trim());
+		clock.setCyclesPerSecond(1);
+        assertNotNull(1,outContent.toString().trim());
         ((ByteArrayOutputStream) outContent).reset();
 	}
 

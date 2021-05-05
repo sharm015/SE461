@@ -117,7 +117,7 @@ public class Tetris extends JFrame {
 	 * Creates a new Tetris instance. Sets up the window's properties,
 	 * and adds a controller listener.
 	 */
-	private Tetris() {
+	public Tetris() {
 		/*
 		 * Set the basic properties of the window.
 		 */
@@ -264,7 +264,7 @@ public class Tetris extends JFrame {
 	/**
 	 * Starts the game running. Initializes everything and enters the game loop.
 	 */
-	private void startGame() {
+	public void startGame() {
 		/*
 		 * Initialize our random number generator, logic timer, and new game variables.
 		 */
@@ -319,7 +319,7 @@ public class Tetris extends JFrame {
 	/**
 	 * Updates the game and handles the bulk of it's logic.
 	 */
-	private void updateGame() {
+	public void updateGame() {
 		/*
 		 * Check to see if the piece's position can move down to the next row.
 		 */
