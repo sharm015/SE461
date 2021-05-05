@@ -1,15 +1,20 @@
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.*;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import java.io.PrintStream;
-import java.time.Clock;
 import java.io.OutputStream;
 import java.io.ByteArrayOutputStream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+
+import src.Clock;
 
 class ClockTest {
 	private static final OutputStream outContent = null;
@@ -17,11 +22,11 @@ class ClockTest {
 	private final PrintStream ogOut = System.out;
 	private final PrintStream ogErr = System.err;
 	
-	private Clock clock;
+	public Clock clock;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		clock = new Clock();
+		clock = new Clock(1);
 		System.setOut(new PrintStream(outContent));
 		System.setErr(new PrintStream(errContent));
 	}
@@ -36,8 +41,8 @@ class ClockTest {
 	@Test
 	void CPCtest() {
 		
-		ClockTest.clock(0);
-        assertEquals(outContent.toString().trim());
+		ClockTest.clock();
+        assertEquals(null,outContent.toString().trim());
         ((ByteArrayOutputStream) outContent).reset();
 	}
 
