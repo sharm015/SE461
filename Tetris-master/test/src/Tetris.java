@@ -319,7 +319,7 @@ public class Tetris extends JFrame {
 	/**
 	 * Updates the game and handles the bulk of it's logic.
 	 */
-	public void updateGame() {
+	public void updateGame() { 
 		/*
 		 * Check to see if the piece's position can move down to the next row.
 		 */

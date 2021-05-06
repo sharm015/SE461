@@ -18,5 +18,5 @@ class SidePanelTest {
 	void test() {
 		fail("Not yet implemented");
 	}
-
+ 
 }
