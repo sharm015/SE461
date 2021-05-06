@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import src.*;
+
 
 class TetrisTest {
 	
@@ -37,7 +39,7 @@ class TetrisTest {
 */
 	@Test
 	void testUpdateGame() {
-		//tetris.updateGame();
+		tetris.updateGame();
 		currentPiece = tetris.getPieceType();
 		//At any time, the no. of rows cleared should be less than or equal to 4
         assertTrue(boardP.isValidAndEmpty(currentPiece, 4, 4, 1));
