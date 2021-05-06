@@ -1,4 +1,4 @@
-package org.psnbtech;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -136,11 +136,11 @@ public class BoardPanel extends JPanel {
 	
 	/**
 	 * Determines whether or not a piece can be placed at the coordinates.
-	 * @param type THe type of piece to use.
-	 * @param x The x coordinate of the piece.
-	 * @param y The y coordinate of the piece.
-	 * @param rotation The rotation of the piece.
-	 * @return Whether or not the position is valid.
+	 * @param type THe type of piece to use.  - typeJ
+	 * @param x The x coordinate of the piece. - 2
+	 * @param y The y coordinate of the piece. - 2
+	 * @param rotation The rotation of the piece.   - 0
+	 * @return Whether or not the position is valid. - 
 	 */
 	public boolean isValidAndEmpty(TileType type, int x, int y, int rotation) {
 				

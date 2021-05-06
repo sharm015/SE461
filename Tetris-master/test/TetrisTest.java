@@ -1,38 +1,47 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.Tetris;
+
 
 class TetrisTest {
-	private static final OutputStream outContent = null;
-	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	private final PrintStream ogOut = System.out;
-	private final PrintStream ogErr = System.err;
-	private Tetris update;
 	
-
+	private Tetris tetris;
+	private BoardPanel boardP;
+	private TileType currentPiece;
+	
 	@BeforeEach
 	void setUp() throws Exception {
-		update = new Tetris();
+		tetris = new Tetris();
+        tetris.startGame();
 		
-		System.setOut(new PrintStream(errContent));
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		update = null;
-		System.setOut(ogOut);
+		
+	}
+	
+/*
+	@Test
+	void testTetris() {
+		fail("Not yet implemented");
 	}
 
 	@Test
-	void testCPC() {
-		update.updateGame();
+	void testStartGame() {
+		fail("Not yet implemented");
+	}
+*/
+	@Test
+	void testUpdateGame() {
+		//tetris.updateGame();
+		currentPiece = tetris.getPieceType();
+		//At any time, the no. of rows cleared should be less than or equal to 4
+        assertTrue(boardP.isValidAndEmpty(currentPiece, 4, 4, 1));
+        
 	}
 
 }
