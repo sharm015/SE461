@@ -27,7 +27,8 @@ class TetrisTest {
 	public int OriginalRow;
 	public int TcurrentCol ;
 	public int TcurrentRotation;
-	//boardP.isValidAndEmpty(TcurrentPiece, TcurrentCol, Tcurrentrow + 1 , Tcurrentrotation);
+	public int TcurrentRow;
+	public int TScore;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -37,10 +38,9 @@ class TetrisTest {
 		OriginalRow = tetris.getPieceRow();
 		TcurrentCol = tetris.getPieceCol();
 		TcurrentRotation = tetris.getPieceRotation();
+		TScore = tetris.getScore();
+		TcurrentRow = tetris.currentRow;
 		
-		//this.boardP = new BoardPanel(this);
-		
-
 	}
  
 	@AfterEach
@@ -49,12 +49,14 @@ class TetrisTest {
 		boardP = null;
 		tetris = null;
 		tile1= null;
-		OriginalRow = 0;
+		OriginalRow = this.TcurrentRow;
 		TcurrentCol = 0;
-		TcurrentRotation = 1;
-		
+		TcurrentRotation = 0;
+		TcurrentRow = 0;
+		TScore = 0;
 		System.setOut(ogOut);
 		System.setErr(ogErr);
+		
 	}
 	/*
 	@Test
@@ -89,14 +91,23 @@ class TetrisTest {
 	void testUpdateGame() {
 
 		//----------Test path: [1,2]--------------//
-		//int OriginalRow = tetris.getPieceRow();		
-		//boolean a = (this.node1 == this.node1);
-        //assertTrue(a);
-        //assertEquals(Tcurrentrow+2, tetris.updateGame());
 		
 		assertTrue(boardP.isValidAndEmpty(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation));
+		errContent.reset();
+		
+		//----------Test path: [1,3,4,5]---------//
+		assertTrue(boardP.isValidAndEmpty(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation));
+		boardP.addPiece(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation);
+		int Tcleared = boardP.checkLines();
+		TScore = TScore +50;
+		assertTrue(Tcleared > 0);
+		
+		tetris.spawnPiece();
+		
+		
+
 	    
-		 //int TcurrentRow = OriginalRow + 1;
+		 //TcurrentRow = OriginalRow + 1;
 		// assertTrue(TcurrentRow > OriginalRow);
 		 //assertEquals(2,tetris.updateGame());
         

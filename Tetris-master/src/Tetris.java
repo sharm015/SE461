@@ -18,100 +18,100 @@ public class Tetris extends JFrame {
 	/**
 	 * The Serial Version UID.
 	 */
-	private static final long serialVersionUID = -4722429764792514382L;
+	public static final long serialVersionUID = -4722429764792514382L;
 
 	/**
 	 * The number of milliseconds per frame.
 	 */
-	private static final long FRAME_TIME = 1000L / 50L;
+	public static final long FRAME_TIME = 1000L / 50L;
 	
 	/**
 	 * The number of pieces that exist.
 	 */
-	private static final int TYPE_COUNT = TileType.values().length;
+	public static final int TYPE_COUNT = TileType.values().length;
 		
 	/**
 	 * The BoardPanel instance.
 	 */
-	private BoardPanel board;
+	public BoardPanel board;
 	
 	/**
 	 * The SidePanel instance.
 	 */
-	private SidePanel side;
+	public SidePanel side;
 	
 	/**
 	 * Whether or not the game is paused.
 	 */
-	private boolean isPaused;
+	public boolean isPaused;
 	
 	/**
 	 * Whether or not we've played a game yet. This is set to true
 	 * initially and then set to false when the game starts.
 	 */
-	private boolean isNewGame;
+	public boolean isNewGame;
 	
 	/**
 	 * Whether or not the game is over.
 	 */
-	private boolean isGameOver;
+	public boolean isGameOver;
 	
 	/**
 	 * The current level we're on.
 	 */
-	private int level;
+	public int level;
 	
 	/**
 	 * The current score.
 	 */
-	private int score;
+	public int score;
 	
 	/**
 	 * The random number generator. This is used to
 	 * spit out pieces randomly.
 	 */
-	private Random random;
+	public Random random;
 	
 	/**
 	 * The clock that handles the update logic.
 	 */
-	private Clock logicTimer;
+	public Clock logicTimer;
 				
 	/**
 	 * The current type of tile.
 	 */
-	private TileType currentType;
+	public TileType currentType;
 	
 	/**
 	 * The next type of tile.
 	 */
-	private TileType nextType;
+	public TileType nextType;
 		
 	/**
 	 * The current column of our tile.
 	 */
-	private int currentCol;
+	public int currentCol;
 	
 	/**
 	 * The current row of our tile.
 	 */
-	private int currentRow;
+	public int currentRow;
 	
 	/**
 	 * The current rotation of our tile.
 	 */
-	private int currentRotation;
+	public int currentRotation;
 		
 	/**
 	 * Ensures that a certain amount of time passes after a piece is
 	 * spawned before we can drop it.
 	 */
-	private int dropCooldown;
+	public int dropCooldown;
 	
 	/**
 	 * The speed of the game.
 	 */
-	private float gameSpeed;
+	public float gameSpeed;
 		
 	/**
 	 * Creates a new Tetris instance. Sets up the window's properties,
@@ -374,7 +374,7 @@ public class Tetris extends JFrame {
 	/**
 	 * Forces the BoardPanel and SidePanel to repaint.
 	 */
-	private void renderGame() {
+	public void renderGame() {
 		board.repaint();
 		side.repaint();
 	}
@@ -383,7 +383,7 @@ public class Tetris extends JFrame {
 	 * Resets the game variables to their default values at the start
 	 * of a new game.
 	 */
-	private void resetGame() {
+	public void resetGame() {
 		this.level = 1;
 		this.score = 0;
 		this.gameSpeed = 1.0f;
@@ -400,7 +400,7 @@ public class Tetris extends JFrame {
 	 * Spawns a new piece and resets our piece's variables to their default
 	 * values.
 	 */
-	private void spawnPiece() {
+	public void spawnPiece() {
 		/*
 		 * Poll the last piece and reset our position and rotation to
 		 * their default variables, then pick the next piece to use.
@@ -425,7 +425,7 @@ public class Tetris extends JFrame {
 	 * Attempts to set the rotation of the current piece to newRotation.
 	 * @param newRotation The rotation of the new peice.
 	 */
-	private void rotatePiece(int newRotation) {
+	public void rotatePiece(int newRotation) {
 		/*
 		 * Sometimes pieces will need to be moved when rotated to avoid clipping
 		 * out of the board (the I piece is a good example of this). Here we store
