@@ -52,7 +52,7 @@ class TetrisTest {
 */
 	@Test
 	void testUpdateGame() {
-<<<<<<< HEAD
+
 		//----------Test path: [1,2]--------------//
 		
 		TcurrentPiece = tetris.getPieceType();
@@ -65,13 +65,5 @@ class TetrisTest {
 		//boardP.isValidAndEmpty(TcurrentPiece, TcurrentCol, Tcurrentrow + 1 , Tcurrentrotation)
         assertNull(boardP);
         output.reset();
-=======
-		tetris.updateGame();
-		currentPiece = tetris.getPieceType();
-		//At any time, the no. of rows cleared should be less than or equal to 4
-        assertTrue(boardP.isValidAndEmpty(currentPiece, 4, 4, 1));
-        
->>>>>>> 10c7e3eba6ab5c75f4147ce60e90aca239846d50
 	}
-
 }
