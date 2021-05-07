@@ -394,7 +394,7 @@ public class BoardPanel extends JPanel {
 	 * @param y The row.
 	 * @param g The graphics object.
 	 */
-	private void drawTile(TileType type, int x, int y, Graphics g) {
+	public void drawTile(TileType type, int x, int y, Graphics g) {
 		drawTile(type.getBaseColor(), type.getLightColor(), type.getDarkColor(), x, y, g);
 	}
 	

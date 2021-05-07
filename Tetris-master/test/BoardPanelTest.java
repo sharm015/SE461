@@ -78,6 +78,30 @@ class BoardPanelTest {
 	void checklinesTest()
 	{
 		//b.checkLine(1);
-		assertEquals(22,b.checkLines());
+		assertEquals(22,b.checkLines());    
 	}
+	
+	@Test
+	void checkLineTest()
+	{
+		
+		
+		assertEquals("0",b.checkLine(0));
+	}
+	
+	@Test
+	void drawTileTest()
+	{
+		b.drawTile(ty, 0, 0, null);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
