@@ -16,7 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import src.Clock;
 
-class ClockTest {
+class ClockTest { 
 	private static final OutputStream outContent = null;
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	private final PrintStream ogOut = System.out;
