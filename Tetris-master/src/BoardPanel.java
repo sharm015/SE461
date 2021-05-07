@@ -252,7 +252,7 @@ public class BoardPanel extends JPanel {
 	 * @param y The y coordinate to check.
 	 * @return Whether or not the tile is occupied.
 	 */
-	private boolean  (int x, int y) {
+	private boolean isOccupied(int x, int y) {
 		return tiles[y][x] != null;
 	}
 	
