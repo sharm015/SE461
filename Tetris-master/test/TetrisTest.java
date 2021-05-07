@@ -33,8 +33,8 @@ class TetrisTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		tetris = new Tetris();
-		System.setOut(new PrintStream(outContent));
-		System.setErr(new PrintStream(errContent));
+		//System.setOut(new PrintStream(outContent));
+		//System.setErr(new PrintStream(errContent));
 		//tetris.startGame();
         //tetris.updateGame();
 		

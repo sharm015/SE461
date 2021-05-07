@@ -26,7 +26,7 @@ class ClockTest {
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		clock = new Clock(1);
+		clock = new Clock((float) 1.0);
 		System.setOut(new PrintStream(outContent));
 		System.setErr(new PrintStream(errContent));
 	}
@@ -41,9 +41,9 @@ class ClockTest {
 	@Test
 	public void CPCtest() { //for constructor 
 		
-		clock.setCyclesPerSecond(1);
+		clock.setCyclesPerSecond((float) 1.0);
         assertNotNull(1,outContent.toString().trim());
-        ((ByteArrayOutputStream) outContent).reset();
+        //((ByteArrayOutputStream) outContent).reset();
 	}
 
 }

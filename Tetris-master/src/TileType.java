@@ -238,7 +238,7 @@ public enum TileType {
 	/**
 	 * The tiles for this piece. Each piece has an array of tiles for each rotation.
 	 */
-	private boolean[][] tiles;
+	public boolean[][] tiles;
 	
 	/**
 	 * Creates a new TileType.

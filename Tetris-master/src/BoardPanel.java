@@ -90,12 +90,12 @@ public class BoardPanel extends JPanel {
 	/**
 	 * The larger font to display.
 	 */
-	private static final Font LARGE_FONT = new Font("Tahoma", Font.BOLD, 16);
+	public static final Font LARGE_FONT = new Font("Tahoma", Font.BOLD, 16);
 
 	/**
 	 * The smaller font to display.
 	 */
-	private static final Font SMALL_FONT = new Font("Tahoma", Font.BOLD, 12);
+	public static final Font SMALL_FONT = new Font("Tahoma", Font.BOLD, 12);
 	
 	/**
 	 * The Tetris instance.
@@ -105,7 +105,7 @@ public class BoardPanel extends JPanel {
 	/**
 	 * The tiles that make up the board.
 	 */
-	private TileType[][] tiles;
+	TileType[][] tiles;
 		
 	/**
 	 * Crates a new GameBoard instance.
@@ -222,7 +222,7 @@ public class BoardPanel extends JPanel {
 	 * @param line The row to check.
 	 * @return Whether or not this row is full.
 	 */
-	private boolean checkLine(int line) {
+	public boolean checkLine(int line) {
 		/*
 		 * Iterate through every column in this row. If any of them are
 		 * empty, then the row is not full.
@@ -252,7 +252,7 @@ public class BoardPanel extends JPanel {
 	 * @param y The y coordinate to check.
 	 * @return Whether or not the tile is occupied.
 	 */
-	private boolean isOccupied(int x, int y) {
+	private boolean  (int x, int y) {
 		return tiles[y][x] != null;
 	}
 	
