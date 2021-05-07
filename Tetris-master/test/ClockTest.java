@@ -14,7 +14,7 @@ import java.io.ByteArrayOutputStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import src.Clock;
+
 
 class ClockTest { 
 	private static final OutputStream outContent = null;
