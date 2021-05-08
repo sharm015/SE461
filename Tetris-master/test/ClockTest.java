@@ -60,8 +60,17 @@ class ClockTest {
 	public void testisPaused() {
 		Tclock.isPaused = true;
 		assertTrue(Tclock.isPaused());
+		Tclock.isPaused = false;
+		assertFalse(Tclock.isPaused());
 	}
 	
+	@Test
+	public void testpeekElapsedCycle() {
+		Tclock.elapsedCycles = 2;
+		assertTrue(Tclock.peekElapsedCycle());
+		Tclock.elapsedCycles = 0;
+		assertFalse(Tclock.peekElapsedCycle());
+	}
 	
 
 }
