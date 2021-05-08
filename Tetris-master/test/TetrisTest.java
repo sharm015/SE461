@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import java.io.PrintStream;
 import java.util.Random;
-
+import java.awt.event.KeyEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
@@ -22,6 +22,7 @@ class TetrisTest {
 	public Tetris tetris;
 	public BoardPanel boardP;
 	public Random random;
+	public KeyEvent key;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -59,6 +60,61 @@ class TetrisTest {
 
 		this.tetris.rotatePiece(2);
 	}
+	
+	@Test 
+	void keyPressedTest()
+	{
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
+		this.tetris.isPaused=false;
+		this.tetris.dropCooldown=0;
+		this.tetris.dispatchEvent(key);
+		this.tetris.dropCooldown=1;
+		this.tetris.dispatchEvent(key);
+		this.tetris.isPaused=true;
+		this.tetris.dispatchEvent(key);
+		
+		
+		//Key a
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_A,'a');
+		this.tetris.isPaused=true;
+		this.tetris.dispatchEvent(key);
+		
+		
+		//Key d
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_D,'a');
+		this.tetris.dispatchEvent(key);
+		
+		
+		//Key q
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_Q,'a');
+		
+		TileType tile1 = TileType.TypeO;
+		this.boardP.isValidAndEmpty(tile1, 2, 2, 2);
+		this.tetris.dispatchEvent(key);
+		
+		
+		//key e
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_E,'a');
+		this.tetris.isPaused=true;
+		this.tetris.dispatchEvent(key);
+		
+		
+		//key p
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_P,'a');
+		this.tetris.isNewGame=true;
+		this.tetris.dispatchEvent(key);
+		
+		//key enter
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER,'a');
+		this.tetris.isNewGame=true;
+		this.tetris.dispatchEvent(key);
+		
+		
+		//key released
+		this.key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
+		this.tetris.dispatchEvent(key);
+	}
+	
 }
 
 
