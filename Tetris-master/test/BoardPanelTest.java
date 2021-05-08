@@ -1,10 +1,8 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,30 +57,25 @@ class BoardPanelTest {
 	void isValidAndEmptyTest()
 	{
 		b.isValidAndEmpty(ty, 3, 3, 2);
-		//assertEquals("true",outContent.toString().trim());
 		b.isValidAndEmpty(ty, 0, 0, 0);
-		//assertEquals("true",outContent.toString().trim());
 		b.isValidAndEmpty(ty2, 4, 4, 1);
-
 		b.isValidAndEmpty(ty3, 4, 4, 1);
 	}
 
 	@Test
 	void addPieceTest()
 	{
-		//b.addPiece(ty, 3, 3, 2);
 		TileType tile2 = TileType.TypeL;
-		this.b.addPiece(tile2, 3,2,2);
+		b.addPiece(tile2, 3,2,2);
 
-		assertEquals(false, this.b.isValidAndEmpty(tile2, 3,2,2));
+		assertEquals(false, b.isValidAndEmpty(tile2, 3,2,2));
 	}
 
 	@Test
 	void checklinesTest()
 	{
-		//t.board.tiles[1][1] = null;
-		assertEquals(true,this.b.checkLine(1));
-		assertEquals(22,this.b.checkLines());
+		assertEquals(true,b.checkLine(1));
+		assertEquals(22,b.checkLines());
 
 	}
 
