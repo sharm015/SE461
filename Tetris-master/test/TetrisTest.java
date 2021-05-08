@@ -1,14 +1,22 @@
 import static org.junit.Assert.assertEquals;
+<<<<<<< HEAD
 import java.io.PrintStream;
 import java.util.Random;
 import java.awt.event.KeyEvent;
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> be710431eda1a04b45d001823de4b55bfbc262c2
+>>>>>>> 47588b46b3f462b1bda693e0d6213c23e1e71ff5
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Random;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.*;
 
 
 
@@ -26,14 +34,20 @@ class TetrisTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
+<<<<<<< HEAD
 		this.tetris = new Tetris();
 		this.boardP  = new BoardPanel(tetris); 
+		//this.key = new KeyEvent();
+=======
+		tetris = new Tetris();
+		boardP  = new BoardPanel(tetris); 
+>>>>>>> be710431eda1a04b45d001823de4b55bfbc262c2
 		
-		this.tetris.random = new Random();
-		this.tetris.isNewGame = true;
-		this.tetris.gameSpeed = 1.0f;
-		this.tetris.logicTimer = new Clock(1.0f);
-		this.tetris.board = boardP; 
+		tetris.random = new Random();
+		tetris.isNewGame = true;
+		tetris.gameSpeed = 1.0f;
+		tetris.logicTimer = new Clock(1.0f);
+		tetris.board = boardP; 
 	}
  
 	@AfterEach
@@ -46,21 +60,23 @@ class TetrisTest {
 	void testUpdateGame() {
 		
 		TileType tile = TileType.TypeO;
-		this.tetris.resetGame();
-		this.tetris.board.addPiece(tile, 2,3,1);
+        this.tetris.resetGame();
+        this.tetris.board.addPiece(tile, 2,3,1);
+
+        this.tetris.updateGame();
+        assertEquals(1L,(long)this.tetris.level);
+        assertEquals(0L,(long)this.tetris.score);
 		
-		this.tetris.updateGame();
-		assertEquals(1L,(long)this.tetris.level);
-		assertEquals(0L,(long)this.tetris.score);
 	}
 	
 	@Test
 	void rotatePieceTest() {
-		this.tetris.currentType=TileType.TypeI;
+		this.tetris.currentType = TileType.TypeI;
 
 		this.tetris.rotatePiece(2);
 	}
 	
+<<<<<<< HEAD
 	@Test 
 	void keyPressedTest()
 	{
@@ -115,7 +131,52 @@ class TetrisTest {
 		this.tetris.dispatchEvent(key);
 	}
 	
+=======
+	
+	@Test 
+	void keyPressedTest()
+	{
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
+	tetris.isPaused=false;
+	tetris.dropCooldown=0;
+	tetris.dispatchEvent(key);
+	tetris.dropCooldown=1;
+	tetris.dispatchEvent(key);
+	tetris.isPaused=true;
+	tetris.dispatchEvent(key);
+	
+	
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_A,'a');
+	tetris.isPaused=true;
+	tetris.dispatchEvent(key);
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_D,'a');
+	tetris.dispatchEvent(key);
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_Q,'a');
+	tetris.isPaused=true;
+	TileType tile = TileType.TypeO;
+	boardP.isValidAndEmpty(tile, 2, 2, 2);
+	tetris.dispatchEvent(key);
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_E,'a');
+	tetris.isPaused=true;
+	tetris.dispatchEvent(key);
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_P,'a');
+	tetris.dispatchEvent(key);
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER,'a');
+	tetris.isNewGame=true;
+	tetris.dispatchEvent(key);
+	
+	key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
+	tetris.dispatchEvent(key);
+	}
+>>>>>>> 47588b46b3f462b1bda693e0d6213c23e1e71ff5
 }
+
 
 
 

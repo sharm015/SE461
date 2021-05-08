@@ -9,8 +9,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import src.*;
-
 class BoardPanelTest {
 	public static final OutputStream outContent = null;
 	public final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -86,13 +84,6 @@ class BoardPanelTest {
 		assertEquals(22,this.b.checkLines());
 
 	}
-
-
-
-
-
-
-
 
 
 
