@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import src.*;
 
 
 
@@ -28,64 +28,48 @@ class TetrisTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		tetris = new Tetris();
-		boardP  = new BoardPanel(tetris); 
+		this.tetris = new Tetris();
+		this.boardP  = new BoardPanel(tetris); 
 		
-		tetris.random = new Random();
-		tetris.isNewGame = true;
-		tetris.gameSpeed = 1.0f;
-		tetris.logicTimer = new Clock(1.0f);
-		tetris.board = boardP; 
+		this.tetris.random = new Random();
+		this.tetris.isNewGame = true;
+		this.tetris.gameSpeed = 1.0f;
+		this.tetris.logicTimer = new Clock(1.0f);
+		this.tetris.board = boardP; 
 	}
  
 	@AfterEach
 	void tearDown() throws Exception {
-		tetris = null;
-		boardP = null;
+		this.tetris = null;
+		this.boardP = null;
 	}
 	
-	/*
-	@Test
-	void testKeyPressed() {
-		try {
-			Robot robot = new Robot();
-			robot.keyPress(KeyEvent.VK_S);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyPress(KeyEvent.VK_A);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyPress(KeyEvent.VK_D);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyPress(KeyEvent.VK_Q);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyPress(KeyEvent.VK_E);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyPress(KeyEvent.VK_P);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_S);
-		} catch (AWTException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	void testStartGame() {
-		//tetris.startGame();
-	}
-*/
 	@Test
 	void testUpdateGame() {
 		
 		TileType tile = TileType.TypeO;
-		assertTrue(boardP.isValidAndEmpty(tile, 2, 2, 2));
 		this.tetris.resetGame();
-		this.tetris.board.addPiece(tile, 2, 3, 1);
+		this.tetris.board.addPiece(tile, 2,3,1);
+		this.tetris.renderGame();
+		this.tetris.updateGame();
+		assertEquals(1L,(long)this.tetris.level);
+		assertEquals(0L,(long)this.tetris.score);
+	}
+	
+	@Test
+	void rotatePieceTest() {
+		this.tetris.currentType=TileType.TypeI;
 		
+		this.tetris.rotatePiece(2);
+		this.tetris.resetGame();
+		this.tetris.currentType=TileType.TypeO;
 		
-			this.tetris.updateGame();
-			assertAll(
-					() -> assertEquals(1L, (long)this.tetris.level),
-					() -> assertEquals(0L, (long)this.tetris.score)
-			);
+		this.tetris.rotatePiece(1);
 	}
 }
+
+
+
+
+
+
