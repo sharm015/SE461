@@ -415,7 +415,7 @@ public class Tetris extends JFrame {
 		 * If the spawn point is invalid, we need to pause the game and flag that we've lost
 		 * because it means that the pieces on the board have gotten too high.
 		 */
-		if(!board.isValidAndEmpty(this.currentType, currentCol, currentRow, currentRotation)) {
+		if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
 			this.isGameOver = true;
 			logicTimer.setPaused(true);
 		}		

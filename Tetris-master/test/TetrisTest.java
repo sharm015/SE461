@@ -1,6 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.PrintStream;
+import java.util.Random;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -23,41 +24,26 @@ class TetrisTest {
 	
 	public Tetris tetris;
 	public BoardPanel boardP;
-	public TileType tile1; 
-	public int OriginalRow;
-	public int TcurrentCol ;
-	public int TcurrentRotation;
-	public int TcurrentRow;
-	public int TScore;
+	public Random random;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		tetris = new Tetris();
 		boardP  = new BoardPanel(tetris); 
-		tile1 = TileType.TypeJ;
-		OriginalRow = tetris.getPieceRow();
-		TcurrentCol = tetris.getPieceCol();
-		TcurrentRotation = tetris.getPieceRotation();
-		TScore = tetris.getScore();
-		TcurrentRow = tetris.currentRow;
 		
+		tetris.random = new Random();
+		tetris.isNewGame = true;
+		tetris.gameSpeed = 1.0f;
+		tetris.logicTimer = new Clock(1.0f);
+		tetris.board = boardP; 
 	}
  
 	@AfterEach
 	void tearDown() throws Exception {
-		//tetris = null;
-		boardP = null;
 		tetris = null;
-		tile1= null;
-		OriginalRow = TcurrentRow;
-		TcurrentCol = 0;
-		TcurrentRotation = 0;
-		TcurrentRow = 0;
-		TScore = 0;
-		System.setOut(ogOut);
-		System.setErr(ogErr);
-		
+		boardP = null;
 	}
+	
 	/*
 	@Test
 	void testKeyPressed() {
@@ -89,31 +75,17 @@ class TetrisTest {
 */
 	@Test
 	void testUpdateGame() {
-
-		//----------Test path: [1,2]--------------//
-		assertTrue(boardP.isValidAndEmpty(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation));
-		errContent.reset();
 		
-		//----------Test path: [1,3,4,5]---------//
-		assertTrue(boardP.isValidAndEmpty(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation));
-		boardP.addPiece(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation);
-		int Tcleared = boardP.checkLines();
-		//TScore = TScore +50 << Tcleared;
-		//assertTrue(Tcleared > 0);
-		//assertNotSame(TScore, tetris.score);
-		assertEqual(expected value, tetris.updateGame());
+		TileType tile = TileType.TypeO;
+		assertTrue(boardP.isValidAndEmpty(tile, 2, 2, 2));
+		this.tetris.resetGame();
+		this.tetris.board.addPiece(tile, 2, 3, 1);
 		
+		
+			this.tetris.updateGame();
+			assertAll(
+					() -> assertEquals(1L, (long)this.tetris.level),
+					() -> assertEquals(0L, (long)this.tetris.score)
+			);
 	}
-		
-
-	    
-		 //TcurrentRow = OriginalRow + 1;
-		// assertTrue(TcurrentRow > OriginalRow);
-		 //assertEquals(2,tetris.updateGame());
-        
-		 //assertNotNull(boardP);
-        //output.reset();
-        
-        //TestPath: [1,3,4,5]
 }
-
