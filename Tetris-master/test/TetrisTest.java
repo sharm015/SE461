@@ -1,10 +1,7 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 import java.io.PrintStream;
 import java.util.Random;
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
@@ -50,7 +47,7 @@ class TetrisTest {
 		TileType tile = TileType.TypeO;
 		this.tetris.resetGame();
 		this.tetris.board.addPiece(tile, 2,3,1);
-		this.tetris.renderGame();
+		
 		this.tetris.updateGame();
 		assertEquals(1L,(long)this.tetris.level);
 		assertEquals(0L,(long)this.tetris.score);
@@ -59,12 +56,8 @@ class TetrisTest {
 	@Test
 	void rotatePieceTest() {
 		this.tetris.currentType=TileType.TypeI;
-		
+
 		this.tetris.rotatePiece(2);
-		this.tetris.resetGame();
-		this.tetris.currentType=TileType.TypeO;
-		
-		this.tetris.rotatePiece(1);
 	}
 }
 
