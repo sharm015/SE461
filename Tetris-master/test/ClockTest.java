@@ -1,18 +1,14 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.*;
+
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
 
 import java.io.PrintStream;
 import java.io.OutputStream;
 import java.io.ByteArrayOutputStream;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
+
 
 
 
@@ -22,28 +18,50 @@ class ClockTest {
 	private final PrintStream ogOut = System.out;
 	private final PrintStream ogErr = System.err;
 	
-	public Clock clock;
+	public Clock Tclock;
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		clock = new Clock((float) 1.0);
-		System.setOut(new PrintStream(outContent));
-		System.setErr(new PrintStream(errContent));
+		Tclock = new Clock(1.0f);
+		Tclock.update();
+		
 	}
 
 	@AfterEach
 	public void tearDown() throws Exception {
-		clock = null;
-		System.setOut(ogOut);
-		System.setErr(ogErr);
+		Tclock = null;
+		//System.setOut(ogOut);
+		//System.setErr(ogErr);
 	}
-
+	
+	
 	@Test
-	public void CPCtest() { //for constructor 
-		
-		clock.setCyclesPerSecond((float) 1.0);
-        assertNotNull(1,outContent.toString().trim());
-        //((ByteArrayOutputStream) outContent).reset();
+	public void update() {
+		Tclock.isPaused = true;
+		Tclock.update();
+		Tclock.isPaused = false;
+		Tclock.update();
 	}
+	
+	@Test
+	public void testhasElapsedCycle() { 
+		Tclock.elapsedCycles = 1;
+		assertTrue(Tclock.hasElapsedCycle());
+		assertFalse(Tclock.hasElapsedCycle());
+	}
+	
+	@Test
+	public void testsetPaused() {
+		Tclock.setPaused(true);
+		Tclock.setPaused(false);
+	}
+	
+	@Test
+	public void testisPaused() {
+		Tclock.isPaused = true;
+		assertTrue(Tclock.isPaused());
+	}
+	
+	
 
 }

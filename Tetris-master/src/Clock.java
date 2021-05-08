@@ -11,28 +11,28 @@ public class Clock {
 	/**
 	 * The number of milliseconds that make up one cycle.
 	 */
-	private float millisPerCycle;
+	public float millisPerCycle;
 	
 	/**
 	 * The last time that the clock was updated (used for calculating the
 	 * delta time).
 	 */
-	private long lastUpdate;
+	public long lastUpdate;
 	
 	/**
 	 * The number of cycles that have elapsed and have not yet been polled.
 	 */
-	private int elapsedCycles;
+	public int elapsedCycles;
 	
 	/**
 	 * The amount of excess time towards the next elapsed cycle.
 	 */
-	private float excessCycles;
+	public float excessCycles;
 	
 	/**
 	 * Whether or not the clock is paused.
 	 */
-	private boolean isPaused;
+	public boolean isPaused;
 	
 	/**
 	 * Creates a new clock and sets it's cycles-per-second.
@@ -134,7 +134,7 @@ public class Clock {
 	 * {@code System.nanoTime()}.
 	 * @return The current time in milliseconds.
 	 */
-	private static final long getCurrentTime() {
+	public static final long getCurrentTime() {
 		return (System.nanoTime() / 1000000L);
 	}
 
