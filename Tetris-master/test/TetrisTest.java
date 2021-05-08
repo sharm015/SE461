@@ -1,14 +1,19 @@
 import static org.junit.Assert.assertEquals;
+<<<<<<< HEAD
 import java.io.PrintStream;
 import java.util.Random;
 import java.awt.event.KeyEvent;
+=======
+
+>>>>>>> be710431eda1a04b45d001823de4b55bfbc262c2
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Random;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.*;
 
 
 
@@ -26,15 +31,20 @@ class TetrisTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
+<<<<<<< HEAD
 		this.tetris = new Tetris();
 		this.boardP  = new BoardPanel(tetris); 
 		//this.key = new KeyEvent();
+=======
+		tetris = new Tetris();
+		boardP  = new BoardPanel(tetris); 
+>>>>>>> be710431eda1a04b45d001823de4b55bfbc262c2
 		
-		this.tetris.random = new Random();
-		this.tetris.isNewGame = true;
-		this.tetris.gameSpeed = 1.0f;
-		this.tetris.logicTimer = new Clock(1.0f);
-		this.tetris.board = boardP; 
+		tetris.random = new Random();
+		tetris.isNewGame = true;
+		tetris.gameSpeed = 1.0f;
+		tetris.logicTimer = new Clock(1.0f);
+		tetris.board = boardP; 
 	}
  
 	@AfterEach
@@ -47,17 +57,18 @@ class TetrisTest {
 	void testUpdateGame() {
 		
 		TileType tile = TileType.TypeO;
-		this.tetris.resetGame();
-		this.tetris.board.addPiece(tile, 2,3,1);
+        this.tetris.resetGame();
+        this.tetris.board.addPiece(tile, 2,3,1);
+
+        this.tetris.updateGame();
+        assertEquals(1L,(long)this.tetris.level);
+        assertEquals(0L,(long)this.tetris.score);
 		
-		this.tetris.updateGame();
-		assertEquals(1L,(long)this.tetris.level);
-		assertEquals(0L,(long)this.tetris.score);
 	}
 	
 	@Test
 	void rotatePieceTest() {
-		this.tetris.currentType=TileType.TypeI;
+		this.tetris.currentType = TileType.TypeI;
 
 		this.tetris.rotatePiece(2);
 	}
@@ -105,6 +116,7 @@ class TetrisTest {
 	tetris.dispatchEvent(key);
 	}
 }
+
 
 
 
