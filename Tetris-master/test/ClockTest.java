@@ -1,22 +1,9 @@
-
-
 import static org.junit.Assert.*;
-
-
-import java.io.PrintStream;
-import java.io.OutputStream;
-import java.io.ByteArrayOutputStream;
-
 import org.junit.jupiter.api.*;
-
-
+import src.*;
 
 
 class ClockTest { 
-	private static final OutputStream outContent = null;
-	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	private final PrintStream ogOut = System.out;
-	private final PrintStream ogErr = System.err;
 	
 	public Clock Tclock;
 	
