@@ -54,7 +54,7 @@ public class Tetris extends JFrame {
 	/**
 	 * Whether or not the game is over.
 	 */
-	public boolean isGameOver;
+	private boolean isGameOver;
 	
 	/**
 	 * The current level we're on.
@@ -80,12 +80,12 @@ public class Tetris extends JFrame {
 	/**
 	 * The current type of tile.
 	 */
-	public TileType currentType;
+	private TileType currentType;
 	
 	/**
 	 * The next type of tile.
 	 */
-	public TileType nextType;
+	private TileType nextType;
 		
 	/**
 	 * The current column of our tile.
@@ -122,9 +122,9 @@ public class Tetris extends JFrame {
 		 * Set the basic properties of the window.
 		 */
 		super("Tetris");
-		setLayout(new BorderLayout());
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
+		this.setLayout(new BorderLayout());
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setResizable(false);
 		
 		/*
 		 * Initialize the BoardPanel and SidePanel instances.
@@ -135,13 +135,13 @@ public class Tetris extends JFrame {
 		/*
 		 * Add the BoardPanel and SidePanel instances to the window.
 		 */
-		add(board, BorderLayout.CENTER);
-		add(side, BorderLayout.EAST);
+		this.add(board, BorderLayout.CENTER);
+		this.add(side, BorderLayout.EAST);
 		
 		/*
 		 * Adds a custom anonymous KeyListener to the frame.
 		 */
-		addKeyListener(new KeyAdapter() {
+		this.addKeyListener(new KeyAdapter() {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -256,9 +256,9 @@ public class Tetris extends JFrame {
 		 * Here we resize the frame to hold the BoardPanel and SidePanel instances,
 		 * center the window on the screen, and show it to the user.
 		 */
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 	}
 	
 	/**
@@ -277,30 +277,30 @@ public class Tetris extends JFrame {
 		 * to start it.
 		 */
 		this.logicTimer = new Clock(gameSpeed);
-		logicTimer.setPaused(true);
+		this.logicTimer.setPaused(true);
 		
 		while(true) {
 			//Get the time that the frame started.
 			long start = System.nanoTime();
 			
 			//Update the logic timer.
-			logicTimer.update();
+			this.logicTimer.update();
 			
 			/*
 			 * If a cycle has elapsed on the timer, we can update the game and
 			 * move our current piece down.
 			 */
-			if(logicTimer.hasElapsedCycle()) {
-				updateGame();
+			if(this.logicTimer.hasElapsedCycle()) {
+				this.updateGame();
 			}
 		
 			//Decrement the drop cool down if necessary.
 			if(dropCooldown > 0) {
-				dropCooldown--;
+				this.dropCooldown--;
 			}
 			
 			//Display the window to the user.
-			renderGame();
+			this.renderGame();
 			
 			/*
 			 * Sleep to cap the framerate.
@@ -323,22 +323,22 @@ public class Tetris extends JFrame {
 		/*
 		 * Check to see if the piece's position can move down to the next row.
 		 */
-		if(board.isValidAndEmpty(currentType, currentCol, currentRow + 1, currentRotation)) {
+		if(this.board.isValidAndEmpty(this.currentType, this.currentCol, this.currentRow + 1, this.currentRotation)) {
 			//Increment the current row if it's safe to do so.
-			currentRow++;
+			this.currentRow++;
 		} else {
 			/*
 			 * We've either reached the bottom of the board, or landed on another piece, so
 			 * we need to add the piece to the board.
 			 */
-			board.addPiece(currentType, currentCol, currentRow, currentRotation);
+			this.board.addPiece(currentType, currentCol, currentRow, currentRotation);
 			
 			/*
 			 * Check to see if adding the new piece resulted in any cleared lines. If so,
 			 * increase the player's score. (Up to 4 lines can be cleared in a single go;
 			 * [1 = 100pts, 2 = 200pts, 3 = 400pts, 4 = 800pts]).
 			 */
-			int cleared = board.checkLines();
+			int cleared = this.board.checkLines();
 			if(cleared > 0) {
 				score += 50 << cleared;
 			}
@@ -347,27 +347,27 @@ public class Tetris extends JFrame {
 			 * Increase the speed slightly for the next piece and update the game's timer
 			 * to reflect the increase.
 			 */
-			gameSpeed = gameSpeed + 0.035f;
-			logicTimer.setCyclesPerSecond(gameSpeed);
-			logicTimer.reset();
+			this.gameSpeed =this.gameSpeed + 0.035f;
+			this.logicTimer.setCyclesPerSecond(this.gameSpeed);
+			this.logicTimer.reset();
 			
 			/*
 			 * Set the drop cooldown so the next piece doesn't automatically come flying
 			 * in from the heavens immediately after this piece hits if we've not reacted
 			 * yet. (~0.5 second buffer).
 			 */
-			dropCooldown = 25;
+			this.dropCooldown = 25;
 			
 			/*
 			 * Update the difficulty level. This has no effect on the game, and is only
 			 * used in the "Level" string in the SidePanel.
 			 */
-			level = (int)(gameSpeed * 1.70f);
+			this.level = (int)(gameSpeed * 1.70f);
 			
 			/*
 			 * Spawn a new piece to control.
 			 */
-			spawnPiece();
+			this.spawnPiece();
 		}		
 	}
 	
@@ -375,8 +375,8 @@ public class Tetris extends JFrame {
 	 * Forces the BoardPanel and SidePanel to repaint.
 	 */
 	public void renderGame() {
-		board.repaint();
-		side.repaint();
+		this.board.repaint();
+		this.side.repaint();
 	}
 	
 	/**
@@ -390,10 +390,10 @@ public class Tetris extends JFrame {
 		this.nextType = TileType.values()[random.nextInt(TYPE_COUNT)];
 		this.isNewGame = false;
 		this.isGameOver = false;		
-		board.clear();
-		logicTimer.reset();
-		logicTimer.setCyclesPerSecond(gameSpeed);
-		spawnPiece();
+		this.board.clear();
+		this.logicTimer.reset();
+		this.logicTimer.setCyclesPerSecond(gameSpeed);
+		this.spawnPiece();
 	}
 		
 	/**
@@ -415,7 +415,7 @@ public class Tetris extends JFrame {
 		 * If the spawn point is invalid, we need to pause the game and flag that we've lost
 		 * because it means that the pieces on the board have gotten too high.
 		 */
-		if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
+		if(!board.isValidAndEmpty(this.currentType, currentCol, currentRow, currentRotation)) {
 			this.isGameOver = true;
 			logicTimer.setPaused(true);
 		}		

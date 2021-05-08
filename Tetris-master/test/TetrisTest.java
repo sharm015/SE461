@@ -49,7 +49,7 @@ class TetrisTest {
 		boardP = null;
 		tetris = null;
 		tile1= null;
-		OriginalRow = this.TcurrentRow;
+		OriginalRow = TcurrentRow;
 		TcurrentCol = 0;
 		TcurrentRotation = 0;
 		TcurrentRow = 0;
@@ -91,7 +91,6 @@ class TetrisTest {
 	void testUpdateGame() {
 
 		//----------Test path: [1,2]--------------//
-		
 		assertTrue(boardP.isValidAndEmpty(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation));
 		errContent.reset();
 		
@@ -99,11 +98,12 @@ class TetrisTest {
 		assertTrue(boardP.isValidAndEmpty(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation));
 		boardP.addPiece(tile1, TcurrentCol, OriginalRow + 1 ,TcurrentRotation);
 		int Tcleared = boardP.checkLines();
-		TScore = TScore +50;
-		assertTrue(Tcleared > 0);
+		//TScore = TScore +50 << Tcleared;
+		//assertTrue(Tcleared > 0);
+		//assertNotSame(TScore, tetris.score);
+		assertEqual(expected value, tetris.updateGame());
 		
-		tetris.spawnPiece();
-		
+	}
 		
 
 	    
@@ -115,5 +115,5 @@ class TetrisTest {
         //output.reset();
         
         //TestPath: [1,3,4,5]
-	}
 }
+
