@@ -331,7 +331,7 @@ public class Tetris extends JFrame {
 			 * We've either reached the bottom of the board, or landed on another piece, so
 			 * we need to add the piece to the board.
 			 */
-			this.board.addPiece(currentType, currentCol, currentRow, currentRotation);
+			board.addPiece(currentType, currentCol, currentRow, currentRotation);
 			
 			/*
 			 * Check to see if adding the new piece resulted in any cleared lines. If so,
@@ -347,27 +347,27 @@ public class Tetris extends JFrame {
 			 * Increase the speed slightly for the next piece and update the game's timer
 			 * to reflect the increase.
 			 */
-			this.gameSpeed =this.gameSpeed + 0.035f;
-			this.logicTimer.setCyclesPerSecond(this.gameSpeed);
-			this.logicTimer.reset();
+			gameSpeed =this.gameSpeed + 0.035f;
+			logicTimer.setCyclesPerSecond(this.gameSpeed);
+			logicTimer.reset();
 			
 			/*
 			 * Set the drop cooldown so the next piece doesn't automatically come flying
 			 * in from the heavens immediately after this piece hits if we've not reacted
 			 * yet. (~0.5 second buffer).
 			 */
-			this.dropCooldown = 25;
+			dropCooldown = 25;
 			
 			/*
 			 * Update the difficulty level. This has no effect on the game, and is only
 			 * used in the "Level" string in the SidePanel.
 			 */
-			this.level = (int)(gameSpeed * 1.70f);
+			level = (int)(gameSpeed * 1.70f);
 			
 			/*
 			 * Spawn a new piece to control.
 			 */
-			this.spawnPiece();
+			spawnPiece();
 		}		
 	}
 	
@@ -495,6 +495,7 @@ public class Tetris extends JFrame {
 	 * @return Whether or not this is a new game.
 	 */
 	public boolean isNewGame() {
+		
 		return isNewGame;
 	}
 	

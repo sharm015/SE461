@@ -43,7 +43,6 @@ class TetrisTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		tetris = null;
-		boardP = null;
 	}
 	
 	
@@ -75,11 +74,11 @@ class TetrisTest {
         assertEquals(0L,(long)tetris.score);
 	}
 	
-
+/*
 	@Test 
 	void keyPressedTest()
 	{
-		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
+		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'S');
 		tetris.isPaused=false;
 		tetris.dropCooldown=0;
 		tetris.dispatchEvent(key);
@@ -90,25 +89,38 @@ class TetrisTest {
 		
 		
 		//Key a
-		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_A,'a');
-		TileType tile = TileType.TypeI;
-		tetris.isPaused=true;
-		tetris.board.isValidAndEmpty(tile, 2, 2, 2);
-		tetris.dispatchEvent(key);
-		TileType tile2 = TileType.TypeO;
-		tetris.isPaused=true;
-		tetris.board.isValidAndEmpty(tile2, 2, 3, 1);
-		tetris.dispatchEvent(key);
+		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_A,'A');
+		//tetris.isPaused= true;
+		assertEquals(0, tetris.currentCol);
+		/*tileType = TileType.TypeI;
+		tetris.isPaused= false;
+		tetris.board.isValidAndEmpty(tileType, 4, 4, 1);
+		System.out.println("CurrentCol" + " "+ tetris.getPieceCol());
 		//tetris.dispatchEvent(key);
+		assertEquals(0, tetris.getPieceCol());
+		System.out.println("col after running " + tetris.currentCol);
+		tetris.dispatchEvent(key);
 		
+		for(int x =0 ; x < 10; x++) {
+			for(int y = 0; y < 22; y++) {
+				System.out.println(x +" "+ y + " " +tileType);
+			}
+		}
+		
+		tetris.board.isValidAndEmpty(tileType, 7, 0, 0);
+		//tetris.dispatchEvent(key);
+		assertEquals(3, tetris.getPieceCol());
+		
+		tetris.isPaused = true;
+		tetris.dispatchEvent(key);
 		
 		//Key d
-		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_D,'a');
+		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_D,'D');
 		tetris.dispatchEvent(key);
 		
 		
 		//Key q
-		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_Q,'a');
+		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_Q,'Q');
 		
 		TileType tile1 = TileType.TypeO;
 		boardP.isValidAndEmpty(tile1, 2, 2, 2);
@@ -116,7 +128,7 @@ class TetrisTest {
 		
 		
 		//key e
-		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_E,'a');
+		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_E,'E');
 		tetris.isPaused=true;
 		tetris.dispatchEvent(key);
 		
@@ -124,7 +136,7 @@ class TetrisTest {
 		
 		
 		//key p
-		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_P,'a');
+		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_P,'P');
 		tetris.isNewGame=true;
 		tetris.dispatchEvent(key);
 		
@@ -138,6 +150,7 @@ class TetrisTest {
 		key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
 		tetris.dispatchEvent(key);
 	}
+*/
 	
 	@Test
 	void spawnPieceTest()

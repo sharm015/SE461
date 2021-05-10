@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -16,6 +18,8 @@ class BoardPanelTest {
 	public TileType ty;
 	public TileType ty2;
 	public TileType ty3;
+	public TileType ty4;
+	public TileType ty5;
 	public BoardPanel b;
 	public Tetris t;
 
@@ -27,6 +31,8 @@ class BoardPanelTest {
 		ty = TileType.TypeJ;
 		ty2=TileType.TypeI;
 		ty3 = TileType.TypeS;
+		ty4 = TileType.TypeL;
+		ty5 = TileType.TypeO;
 
 		//System.setOut(new PrintStream(outContent));
 		//System.setErr(new PrintStream(errContent));
@@ -56,10 +62,11 @@ class BoardPanelTest {
 	@Test
 	void isValidAndEmptyTest()
 	{
-		b.isValidAndEmpty(ty, 3, 3, 2);
-		b.isValidAndEmpty(ty, 0, 0, 0);
-		b.isValidAndEmpty(ty2, 4, 4, 1);
-		b.isValidAndEmpty(ty3, 4, 4, 1);
+		b.isValidAndEmpty(ty, 3, 3, 2); // j
+		b.isValidAndEmpty(ty4, 3, 3, 2); //L
+		b.isValidAndEmpty(ty2, 4, 4, 1); //I
+		b.isValidAndEmpty(ty3, 3, 3, 2); //S
+		b.isValidAndEmpty(ty5, 2,2,2);  //O
 	}
 
 	@Test
@@ -77,10 +84,14 @@ class BoardPanelTest {
 		assertEquals(true,b.checkLine(1));
 		assertEquals(22,b.checkLines());
 		b.setTile(1, 1, ty);
+	}
+	
+	@Test
+	void checkLineTest()
+	{
 		assertEquals(true,b.checkLine(1));
 
 	}
-
-
-
+		
+			
 }

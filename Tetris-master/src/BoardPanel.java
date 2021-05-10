@@ -211,9 +211,12 @@ public class BoardPanel extends JPanel {
 		 */
 		for(int row = 0; row < ROW_COUNT; row++) {
 			if(checkLine(row)) {
+				System.out.println("My row is" + row);
 				completedLines++;
+				
 			}
 		}
+		System.out.println("Completed lines are"+ completedLines);
 		return completedLines;
 	}
 			
@@ -229,6 +232,7 @@ public class BoardPanel extends JPanel {
 		 */
 		for(int col = 0; col < COL_COUNT; col++) {
 			if(!isOccupied(col, line)) {
+				System.out.println("Line = "+ line +" Col = "+ col);
 				return true;
 			}
 		}
