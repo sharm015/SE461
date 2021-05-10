@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.PrintStream;
 import java.util.Random;
@@ -72,6 +73,9 @@ class TetrisTest {
         tetris.updateGame();
         tetris.renderGame();
         assertEquals(0L,(long)tetris.score);
+        tetris.updateGame();
+        tetris.renderGame();
+        tetris.resetGame();
 	}
 	
 /*
@@ -157,7 +161,13 @@ class TetrisTest {
 	{
 		TileType tile = TileType.TypeI;
 		tetris.board.isValidAndEmpty(tile, 2, 2, 2);
-		tetris.spawnPiece();
+		assertEquals(false, tetris.isGameOver());
+		
+	}
+	
+	@Test
+	void startGameTest() {
+		TileT
 	}
 	
 	
