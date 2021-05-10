@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 import java.io.PrintStream;
 import java.util.Random;
 import java.awt.event.KeyEvent;
@@ -21,6 +23,7 @@ class TetrisTest {
 	public BoardPanel boardP;
 	public Random random;
 	public KeyEvent key;
+	public TileType tileType;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -28,7 +31,7 @@ class TetrisTest {
 		tetris = new Tetris();
 		boardP  = new BoardPanel(tetris); 
 		//key = new KeyEvent();
-
+		
 		
 		tetris.random = new Random();
 		tetris.isNewGame = true;
@@ -48,6 +51,12 @@ class TetrisTest {
 	void rotatePieceTest() {
 		tetris.currentType = TileType.TypeI;
 
+		tetris.rotatePiece(2);
+		tetris.currentType = TileType.TypeJ;
+
+		tetris.rotatePiece(1);
+		tetris.currentType = TileType.TypeO;
+		tetris.level=10;
 		tetris.rotatePiece(2);
 	}
 	
@@ -82,8 +91,15 @@ class TetrisTest {
 		
 		//Key a
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_A,'a');
+		TileType tile = TileType.TypeI;
 		tetris.isPaused=true;
+		tetris.board.isValidAndEmpty(tile, 2, 2, 2);
 		tetris.dispatchEvent(key);
+		TileType tile2 = TileType.TypeO;
+		tetris.isPaused=true;
+		tetris.board.isValidAndEmpty(tile2, 2, 3, 1);
+		tetris.dispatchEvent(key);
+		//tetris.dispatchEvent(key);
 		
 		
 		//Key d
@@ -105,6 +121,8 @@ class TetrisTest {
 		tetris.dispatchEvent(key);
 		
 		
+		
+		
 		//key p
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_P,'a');
 		tetris.isNewGame=true;
@@ -119,6 +137,14 @@ class TetrisTest {
 		//key released
 		key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
 		tetris.dispatchEvent(key);
+	}
+	
+	@Test
+	void spawnPieceTest()
+	{
+		TileType tile = TileType.TypeI;
+		tetris.board.isValidAndEmpty(tile, 2, 2, 2);
+		tetris.spawnPiece();
 	}
 	
 	

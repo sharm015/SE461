@@ -76,6 +76,8 @@ class BoardPanelTest {
 	{
 		assertEquals(true,b.checkLine(1));
 		assertEquals(22,b.checkLines());
+		b.setTile(1, 1, ty);
+		assertEquals(true,b.checkLine(1));
 
 	}
 
