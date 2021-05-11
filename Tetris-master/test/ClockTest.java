@@ -1,6 +1,5 @@
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.*;
-import src.*;
 
 
 class ClockTest { 

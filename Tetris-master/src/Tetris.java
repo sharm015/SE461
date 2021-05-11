@@ -54,7 +54,7 @@ public class Tetris extends JFrame {
 	/**
 	 * Whether or not the game is over.
 	 */
-	private boolean isGameOver;
+	boolean isGameOver;
 	
 	/**
 	 * The current level we're on.
@@ -166,6 +166,7 @@ public class Tetris extends JFrame {
 				 */
 				case KeyEvent.VK_A:
 					if(!isPaused && board.isValidAndEmpty(currentType, currentCol - 1, currentRow, currentRotation)) {
+						System.out.println("Under key A" + board.isValidAndEmpty(currentType, currentCol - 1, currentRow, currentRotation));
 						currentCol--;
 					}
 					break;

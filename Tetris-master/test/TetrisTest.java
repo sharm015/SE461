@@ -1,7 +1,4 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.io.PrintStream;
 import java.util.Random;
 import java.awt.event.KeyEvent;
@@ -10,7 +7,7 @@ import java.io.OutputStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.*;
+
 
 
 class TetrisTest {
@@ -78,10 +75,11 @@ class TetrisTest {
         tetris.resetGame();
 	}
 	
-/*
+
 	@Test 
 	void keyPressedTest()
 	{
+		//Key s
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'S');
 		tetris.isPaused=false;
 		tetris.dropCooldown=0;
@@ -90,71 +88,94 @@ class TetrisTest {
 		tetris.dispatchEvent(key);
 		tetris.isPaused=true;
 		tetris.dispatchEvent(key);
-		
+		tetris.resetGame();
 		
 		//Key a
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_A,'A');
-		//tetris.isPaused= true;
-		assertEquals(0, tetris.currentCol);
-		/*tileType = TileType.TypeI;
-		tetris.isPaused= false;
-		tetris.board.isValidAndEmpty(tileType, 4, 4, 1);
-		System.out.println("CurrentCol" + " "+ tetris.getPieceCol());
-		//tetris.dispatchEvent(key);
-		assertEquals(0, tetris.getPieceCol());
-		System.out.println("col after running " + tetris.currentCol);
+		tetris.isPaused = false;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)-1), tetris.currentRow, tetris.currentRotation);
 		tetris.dispatchEvent(key);
-		
-		for(int x =0 ; x < 10; x++) {
-			for(int y = 0; y < 22; y++) {
-				System.out.println(x +" "+ y + " " +tileType);
-			}
-		}
-		
-		tetris.board.isValidAndEmpty(tileType, 7, 0, 0);
-		//tetris.dispatchEvent(key);
-		assertEquals(3, tetris.getPieceCol());
-		
 		tetris.isPaused = true;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)+1), tetris.currentRow, tetris.currentRotation);
 		tetris.dispatchEvent(key);
+		tetris.isPaused = true;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)-1), tetris.currentRow, tetris.currentRotation);
+		tetris.dispatchEvent(key);
+		tetris.isPaused = false;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)+1), tetris.currentRow, tetris.currentRotation);
+		tetris.dispatchEvent(key);
+		tetris.resetGame();
 		
 		//Key d
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_D,'D');
+		tetris.isPaused = false;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)+1), tetris.currentRow, tetris.currentRotation);
 		tetris.dispatchEvent(key);
-		
+		tetris.isPaused = true;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)+1), tetris.currentRow, tetris.currentRotation);
+		tetris.dispatchEvent(key);
+		tetris.isPaused = false;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)-1), tetris.currentRow, tetris.currentRotation);
+		tetris.dispatchEvent(key);
+		tetris.isPaused = true;
+		tetris.board.isValidAndEmpty(tetris.currentType, ((tetris.currentCol)-1), tetris.currentRow, tetris.currentRotation);
+		tetris.dispatchEvent(key);
+		tetris.resetGame();
 		
 		//Key q
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_Q,'Q');
-		
-		TileType tile1 = TileType.TypeO;
-		boardP.isValidAndEmpty(tile1, 2, 2, 2);
+		tetris.isPaused = true;
 		tetris.dispatchEvent(key);
-		
+		tetris.isPaused = false;
+		tetris.dispatchEvent(key);
+		tetris.resetGame();
 		
 		//key e
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_E,'E');
-		tetris.isPaused=true;
+		
+		tetris.isPaused = true;
 		tetris.dispatchEvent(key);
-		
-		
-		
+		tetris.isPaused = false;
+		tetris.dispatchEvent(key);
+		tetris.resetGame();
 		
 		//key p
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_P,'P');
-		tetris.isNewGame=true;
+		tetris.isNewGame=false;
+		tetris.isGameOver = false;
 		tetris.dispatchEvent(key);
+		tetris.isNewGame=false;
+		tetris.isGameOver = true;
+		tetris.dispatchEvent(key);
+		tetris.isNewGame=true;
+		tetris.isGameOver = false;
+		tetris.dispatchEvent(key);
+		tetris.isNewGame=true;
+		tetris.isGameOver = true;
+		tetris.dispatchEvent(key);
+		tetris.resetGame();
 		
 		//key enter
 		key = new KeyEvent(tetris, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER,'a');
 		tetris.isNewGame=true;
+		tetris.isGameOver = false;
 		tetris.dispatchEvent(key);
-		
+		tetris.isNewGame=false;
+		tetris.isGameOver = true;
+		tetris.dispatchEvent(key);
+		tetris.isNewGame=true;
+		tetris.isGameOver = true;
+		tetris.dispatchEvent(key);
+		tetris.isNewGame=false;
+		tetris.isGameOver = false;
+		tetris.dispatchEvent(key);
+		tetris.resetGame();
 		
 		//key released
-		key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
-		tetris.dispatchEvent(key);
+		//key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
+		
 	}
-*/
+
 	
 	@Test
 	void spawnPieceTest()
@@ -165,11 +186,7 @@ class TetrisTest {
 		
 	}
 	
-	@Test
-	void startGameTest() {
-		TileT
-	}
-	
+
 	
 }
 
