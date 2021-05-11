@@ -170,10 +170,20 @@ class TetrisTest {
 		tetris.isGameOver = false;
 		tetris.dispatchEvent(key);
 		tetris.resetGame();
-		
-		//key released
-		//key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'a');
-		
+	
+	}
+	
+	@Test
+	void testKeyReleased() {
+		key = new KeyEvent(tetris, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_S,'S');
+		tetris.isPaused=false;
+		tetris.dropCooldown=0;
+		tetris.dispatchEvent(key);
+		tetris.dropCooldown=1;
+		tetris.dispatchEvent(key);
+		tetris.isPaused=true;
+		tetris.dispatchEvent(key);
+		tetris.resetGame();		
 	}
 
 	
