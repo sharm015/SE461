@@ -406,11 +406,11 @@ public class Tetris extends JFrame {
 		 * Poll the last piece and reset our position and rotation to
 		 * their default variables, then pick the next piece to use.
 		 */
-		this.currentType = nextType;
-		this.currentCol = currentType.getSpawnColumn();
-		this.currentRow = currentType.getSpawnRow();
-		this.currentRotation = 0;
-		this.nextType = TileType.values()[random.nextInt(TYPE_COUNT)];
+		currentType = nextType;
+		currentCol = currentType.getSpawnColumn();
+		currentRow = currentType.getSpawnRow();
+		currentRotation = 0;
+		nextType = TileType.values()[random.nextInt(TYPE_COUNT)];
 		
 		/*
 		 * If the spawn point is invalid, we need to pause the game and flag that we've lost

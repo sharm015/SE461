@@ -36,6 +36,7 @@ class TetrisTest {
 		tetris.gameSpeed = 1.0f;
 		tetris.logicTimer = new Clock(1.0f);
 		tetris.board = boardP; 
+		tetris.resetGame();
 	}
  
 	@AfterEach
